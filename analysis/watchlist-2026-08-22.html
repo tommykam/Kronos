@@ -1,0 +1,1009 @@
+<title>Ten Under Ten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --paper:      #FBFCFC;
+    --surface:    #FFFFFF;
+    --surface-2:  #F2F6F5;
+    --ink:        #12211F;
+    --ink-soft:   #3A4A48;
+    --muted:      #5C6B69;
+    --rule:       #DCE4E2;
+    --rule-soft:  #EAF0EE;
+    --accent:     #0F6B63;
+    --accent-dim: #E2EFED;
+    --good:       #2F7A4B;
+    --warn:       #9A6B12;
+    --risk:       #A33A31;
+    --good-bg:    #E7F2EA;
+    --warn-bg:    #F6EEDC;
+    --risk-bg:    #F7E8E6;
+
+    --f-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --f-body:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --measure: 66ch;
+    --pad: clamp(1.1rem, 4vw, 2.6rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0E1514;
+      --surface:    #141D1C;
+      --surface-2:  #1A2524;
+      --ink:        #E7EEEC;
+      --ink-soft:   #C0CCCA;
+      --muted:      #93A3A0;
+      --rule:       #253230;
+      --rule-soft:  #1E2A29;
+      --accent:     #59C4B3;
+      --accent-dim: #16302D;
+      --good:       #6FC28C;
+      --warn:       #D9AC5A;
+      --risk:       #E08278;
+      --good-bg:    #162A1F;
+      --warn-bg:    #2C2413;
+      --risk-bg:    #2E1B19;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #0E1514;
+    --surface:    #141D1C;
+    --surface-2:  #1A2524;
+    --ink:        #E7EEEC;
+    --ink-soft:   #C0CCCA;
+    --muted:      #93A3A0;
+    --rule:       #253230;
+    --rule-soft:  #1E2A29;
+    --accent:     #59C4B3;
+    --accent-dim: #16302D;
+    --good:       #6FC28C;
+    --warn:       #D9AC5A;
+    --risk:       #E08278;
+    --good-bg:    #162A1F;
+    --warn-bg:    #2C2413;
+    --risk-bg:    #2E1B19;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.4rem, 6vw, 4rem);
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.4rem;
+  }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-size: clamp(2.1rem, 6.5vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: var(--f-display);
+    font-size: clamp(1.02rem, 2.4vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: var(--measure);
+  }
+
+  .dateline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  /* ---------- generic section ---------- */
+
+  section { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  h2 {
+    font-family: var(--f-display);
+    font-size: clamp(1.5rem, 3.6vw, 2rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--f-display);
+    font-size: 1.16rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  p { margin: 0; max-width: var(--measure); }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.1rem;
+  }
+
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- summary table ---------- */
+
+  .scroller {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    min-width: 44rem;
+  }
+
+  thead th {
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.75rem 0.8rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-2);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  .t-tick {
+    font-family: var(--f-mono);
+    font-weight: 600;
+    font-size: 0.84rem;
+    letter-spacing: 0.02em;
+  }
+
+  .t-name { color: var(--muted); font-size: 0.8rem; }
+
+  .num {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* proximity-to-high meter */
+  .meter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 8.5rem;
+  }
+  .meter-track {
+    flex: 1;
+    height: 5px;
+    background: var(--rule);
+    position: relative;
+    min-width: 3.5rem;
+  }
+  .meter-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--accent);
+  }
+  .meter-val {
+    font-family: var(--f-mono);
+    font-size: 0.74rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.5rem;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .chip.good { background: var(--good-bg); color: var(--good); border-color: var(--good); }
+  .chip.warn { background: var(--warn-bg); color: var(--warn); border-color: var(--warn); }
+  .chip.risk { background: var(--risk-bg); color: var(--risk); border-color: var(--risk); }
+
+  /* ---------- tear sheets ---------- */
+
+  .sheets { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .sheet {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--stripe, var(--rule));
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+  .sheet[data-tier="good"] { --stripe: var(--good); }
+  .sheet[data-tier="warn"] { --stripe: var(--warn); }
+  .sheet[data-tier="risk"] { --stripe: var(--risk); }
+
+  .sheet-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.9rem;
+  }
+
+  .sheet-tick {
+    font-family: var(--f-mono);
+    font-size: 1.24rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .sheet-co {
+    font-family: var(--f-display);
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+  }
+
+  .sheet-head .chip { margin-left: auto; }
+
+  .thesis {
+    font-family: var(--f-display);
+    font-size: 1.06rem;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: var(--measure);
+  }
+
+  .figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .fig {
+    background: var(--surface-2);
+    padding: 0.6rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .fig-k {
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .fig-v {
+    font-family: var(--f-mono);
+    font-size: 0.94rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.1rem;
+  }
+
+  .col { display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .col-k {
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .col-k.bull { color: var(--good); border-color: var(--good); }
+  .col-k.bear { color: var(--risk); border-color: var(--risk); }
+
+  .col ul { margin: 0; padding-left: 1.05rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .col li { font-size: 0.9rem; line-height: 1.5; }
+
+  .catalyst {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+    align-items: baseline;
+    background: var(--accent-dim);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.87rem;
+    line-height: 1.45;
+  }
+  .catalyst .cat-k {
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ---------- findings ---------- */
+
+  .findings { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+
+  .finding {
+    background: var(--surface);
+    padding: clamp(0.9rem, 2.6vw, 1.3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .finding p { font-size: 0.94rem; }
+
+  /* ---------- limits ---------- */
+
+  .limits {
+    border: 1px solid var(--rule);
+    background: var(--surface-2);
+    padding: clamp(1rem, 3vw, 1.4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .limits p, .limits li { font-size: 0.88rem; color: var(--ink-soft); }
+  .limits ul { margin: 0; padding-left: 1.05rem; display: flex; flex-direction: column; gap: 0.3rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.1rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  footer p { font-size: 0.82rem; max-width: var(--measure); }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Watchlist Review · 10 Names</div>
+    <h1>Ten Under Ten</h1>
+    <p class="standfirst">Every name on this list shares exactly one trait: a share price below $10. That is a formatting coincidence, not a thesis. Underneath it sit ten businesses with almost nothing in common — a $2.6&nbsp;billion travel platform, a going-concern biotech, and a company that sold its entire revenue base six weeks ago.</p>
+    <div class="dateline">
+      <span>Reviewed 22 Aug 2026</span>
+      <span>Prices as listed on screen</span>
+      <span>Research synthesis · not investment advice</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>The screen at a glance</h2>
+      <p>Sorted as listed. “vs high” measures the listed price against the listed 52-week high — a rough read on how much of each name’s recovery has already happened.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Sector</th>
+            <th scope="col" class="num">Price</th>
+            <th scope="col">vs high</th>
+            <th scope="col">Profitable?</th>
+            <th scope="col">Character</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="t-tick">ABSI</span><br><span class="t-name">Absci</span></td>
+            <td>AI drug discovery</td>
+            <td class="num">9.28</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:77%"></div></div><span class="meter-val">77%</span></div></td>
+            <td>No</td>
+            <td><span class="chip warn">Platform bet</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">ACOG</span><br><span class="t-name">Alpha Cognition</span></td>
+            <td>CNS pharma</td>
+            <td class="num">9.50</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:95%"></div></div><span class="meter-val">95%</span></div></td>
+            <td>No</td>
+            <td><span class="chip warn">Launch ramp</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">AGEN</span><br><span class="t-name">Agenus</span></td>
+            <td>Immuno-oncology</td>
+            <td class="num">7.49</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:85%"></div></div><span class="meter-val">85%</span></div></td>
+            <td>No</td>
+            <td><span class="chip risk">Going concern</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">BFLY</span><br><span class="t-name">Butterfly Network</span></td>
+            <td>Medical imaging</td>
+            <td class="num">9.17</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:91%"></div></div><span class="meter-val">91%</span></div></td>
+            <td>No</td>
+            <td><span class="chip warn">Priced for it</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">CPIX</span><br><span class="t-name">Cumberland Pharma</span></td>
+            <td>Specialty pharma</td>
+            <td class="num">7.50</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:89%"></div></div><span class="meter-val">89%</span></div></td>
+            <td>No</td>
+            <td><span class="chip risk">Stale row</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">DDD</span><br><span class="t-name">3D Systems</span></td>
+            <td>Additive mfg</td>
+            <td class="num">3.16</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:77%"></div></div><span class="meter-val">77%</span></div></td>
+            <td>No</td>
+            <td><span class="chip warn">Turnaround</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">DHX</span><br><span class="t-name">DHI Group</span></td>
+            <td>Career marketplaces</td>
+            <td class="num">4.11</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:91%"></div></div><span class="meter-val">91%</span></div></td>
+            <td>Yes</td>
+            <td><span class="chip good">Cash generative</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">GBTG</span><br><span class="t-name">Amex GBT</span></td>
+            <td>Business travel</td>
+            <td class="num">9.46</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:100%"></div></div><span class="meter-val">~100%</span></div></td>
+            <td>Yes</td>
+            <td><span class="chip good">Scaled operator</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">IRD</span><br><span class="t-name">Opus Genetics</span></td>
+            <td>Ocular gene therapy</td>
+            <td class="num">4.12</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:71%"></div></div><span class="meter-val">71%</span></div></td>
+            <td>No</td>
+            <td><span class="chip warn">Dated catalysts</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-tick">NUVB</span><br><span class="t-name">Nuvation Bio</span></td>
+            <td>Oncology</td>
+            <td class="num">6.83</td>
+            <td><div class="meter"><div class="meter-track"><div class="meter-fill" style="width:70%"></div></div><span class="meter-val">70%</span></div></td>
+            <td>No</td>
+            <td><span class="chip good">Commercial traction</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Name by name</h2>
+      <p>Each sheet reads the same way: what the business actually is, the figures that matter from the most recent quarter, the two sides of the argument, and the next dated event that could move it.</p>
+    </div>
+
+    <div class="sheets">
+
+      <!-- ABSI -->
+      <article class="sheet" data-tier="warn">
+        <div class="sheet-head">
+          <span class="sheet-tick">ABSI</span>
+          <span class="sheet-co">Absci Corporation</span>
+          <span class="chip warn">Platform bet</span>
+        </div>
+        <p class="thesis">An AI protein-design platform that has stopped selling software and started building its own drugs. Judge it as a clinical-stage biotech with an unusually good balance sheet, not as an AI company.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$0.3M</span></div>
+          <div class="fig"><span class="fig-k">vs consensus</span><span class="fig-v">$1.01M</span></div>
+          <div class="fig"><span class="fig-k">Q2 net loss</span><span class="fig-v">$33.2M</span></div>
+          <div class="fig"><span class="fig-k">Cash 6/30</span><span class="fig-v">$201.1M</span></div>
+          <div class="fig"><span class="fig-k">Runway</span><span class="fig-v">2H 2028</span></div>
+          <div class="fig"><span class="fig-k">Avg target</span><span class="fig-v">$13.78</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>$100M raise including $40M from Eli&nbsp;Lilly — validation and capital in one move, funding operations into 2028.</li>
+              <li>ABS-201 interim Phase&nbsp;1 data showed a clean safety profile and a half-life of at least 65 days, pointing at infrequent dosing.</li>
+              <li>Two large consumer-scale indications: pattern hair loss and endometriosis.</li>
+              <li>Street is constructive — consensus Strong Buy, targets $10–$17.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Revenue of $300K missed a $1.01M estimate by two thirds. The partnership model is not paying the bills.</li>
+              <li>Losses widened ~9% year over year; every dollar of value is pipeline, not cash flow.</li>
+              <li>Hair-loss data is blinded interim. Unblinded efficacy is the real test and it hasn't happened.</li>
+              <li>Morgan Stanley moved to Hold in August, against a bullish crowd.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Next</span><span>Unblinded HEADLINE Phase&nbsp;1 efficacy for ABS-201 — the event that decides whether the $200M is funding an asset or an experiment.</span></div>
+      </article>
+
+      <!-- ACOG -->
+      <article class="sheet" data-tier="warn">
+        <div class="sheet-head">
+          <span class="sheet-tick">ACOG</span>
+          <span class="sheet-co">Alpha Cognition</span>
+          <span class="chip warn">Launch ramp</span>
+        </div>
+        <p class="thesis">ZUNVEYL is the first new oral Alzheimer's treatment approved in over 15 years, and its launch curve is the cleanest execution story on this list. The question is whether cash lasts long enough to reach the profitability target.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$6.0M</span></div>
+          <div class="fig"><span class="fig-k">q/q growth</span><span class="fig-v">+71%</span></div>
+          <div class="fig"><span class="fig-k">1H total</span><span class="fig-v">$10.3M</span></div>
+          <div class="fig"><span class="fig-k">Cash 6/30</span><span class="fig-v">$41.4M</span></div>
+          <div class="fig"><span class="fig-k">FY26 opex</span><span class="fig-v">$50–54M</span></div>
+          <div class="fig"><span class="fig-k">Prescribers</span><span class="fig-v">1,347</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>Revenue accelerating, not just growing: +40% q/q then +71% q/q.</li>
+              <li>Depth beneath the headline — bottles dispensed +37%, prescribers +26%, repeat prescribers +29%. Doctors are coming back.</li>
+              <li>Opex guidance was <em>cut</em> to $50–54M while revenue rose. Rare discipline in a launch.</li>
+              <li>Working capital ~$51.5M against only $6.4M of current liabilities.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>The arithmetic is tight: $41.4M cash against $50–54M of annual opex. Management's "12 months" rests on revenue continuing to compound.</li>
+              <li>Operating profitability is targeted for 2027 — a year away, and a financing may arrive first.</li>
+              <li>Trading at ~95% of its 52-week high, so the launch is already in the price.</li>
+              <li>Alzheimer's commercialization has broken larger companies than this one.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Watch</span><span>Q3 revenue against the ~$8–9M the q/q trend implies, and any capital raise — the two are directly linked.</span></div>
+      </article>
+
+      <!-- AGEN -->
+      <article class="sheet" data-tier="risk">
+        <div class="sheet-head">
+          <span class="sheet-tick">AGEN</span>
+          <span class="sheet-co">Agenus</span>
+          <span class="chip risk">Going concern</span>
+        </div>
+        <p class="thesis">A genuinely interesting immuno-oncology asset attached to a balance sheet that carries a going-concern warning. The science and the solvency are two separate bets and you cannot take one without the other.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Market cap</span><span class="fig-v">~$120M</span></div>
+          <div class="fig"><span class="fig-k">Cash 3/31</span><span class="fig-v">$35M</span></div>
+          <div class="fig"><span class="fig-k">Short-term debt</span><span class="fig-v">$30M</span></div>
+          <div class="fig"><span class="fig-k">New raise</span><span class="fig-v">$85M</span></div>
+          <div class="fig"><span class="fig-k">If warrants exercise</span><span class="fig-v">$340M</span></div>
+          <div class="fig"><span class="fig-k">OS readout</span><span class="fig-v">2H 2028</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>BOT/BAL has treated roughly 1,300 patients — this is a mature clinical dataset, not a first-in-human story.</li>
+              <li>Targets MSS/pMMR colorectal cancer, a "cold tumor" where checkpoint inhibitors have historically failed.</li>
+              <li>The July placement was oversubscribed: $85M upfront, up to $340M with warrants.</li>
+              <li>Phase 3 BATMAN and neoadjuvant ROBBIN both running.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>A May SEC filing carried a going-concern disclosure. That is the most serious flag any company on this list has.</li>
+              <li>$35M of cash against $30M of <em>short-term</em> debt at Q1.</li>
+              <li>The $340M headline is mostly warrants — it only arrives if the stock rises, and it dilutes heavily when it does.</li>
+              <li>First overall-survival readout is 2H 2028. That is two more years of funding to find.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Next</span><span>Whether the going-concern language clears from the next 10-Q after the placement. Until it does, dilution risk dominates the science.</span></div>
+      </article>
+
+      <!-- BFLY -->
+      <article class="sheet" data-tier="warn">
+        <div class="sheet-head">
+          <span class="sheet-tick">BFLY</span>
+          <span class="sheet-co">Butterfly Network</span>
+          <span class="chip warn">Priced for it</span>
+        </div>
+        <p class="thesis">Handheld, chip-based ultrasound — and, increasingly, a licensing business selling that chip into other people's devices. The operating story is the best on the list. So is the valuation, in the wrong direction.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$32.6M</span></div>
+          <div class="fig"><span class="fig-k">y/y growth</span><span class="fig-v">+40%</span></div>
+          <div class="fig"><span class="fig-k">Gross margin</span><span class="fig-v">71.4%</span></div>
+          <div class="fig"><span class="fig-k">Embedded rev</span><span class="fig-v">$10.8M</span></div>
+          <div class="fig"><span class="fig-k">FY26 guide</span><span class="fig-v">$119–123M</span></div>
+          <div class="fig"><span class="fig-k">Q3 guide</span><span class="fig-v">$26–30M</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>40% growth at 71.4% gross margin — a genuinely good combination.</li>
+              <li>Adjusted EBITDA loss narrowed 78%, from $6.2M to $1.4M. Breakeven is visible.</li>
+              <li>Butterfly Embedded grew 439% y/y and now has 11 partners, including a brain-computer-interface firm and a women's health wearable.</li>
+              <li>Guidance was raised, not merely met.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li><strong>Q3 guidance of $26–30M sits below the $32.6M just delivered.</strong> The embedded line is lumpy licensing revenue, not a smooth recurring ramp.</li>
+              <li>Embedded growth leans on the Midjourney partnership — concentration inside the fastest-growing segment.</li>
+              <li>The stock is up roughly 600% in a year and sits near its high; on ~$121M of guided revenue the multiple is a demanding one.</li>
+              <li>Beta above 2. This name moves twice as hard as the market in both directions.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Watch</span><span>Q3 print against the $26–30M guide, and whether embedded revenue holds without a new partner signing. A miss here re-rates the multiple fast.</span></div>
+      </article>
+
+      <!-- CPIX -->
+      <article class="sheet" data-tier="risk">
+        <div class="sheet-head">
+          <span class="sheet-tick">CPIX</span>
+          <span class="sheet-co">Cumberland Pharmaceuticals</span>
+          <span class="chip risk">Stale row</span>
+        </div>
+        <p class="thesis">The most important thing on this sheet is that the screen is describing a company that no longer exists. On 4 August, Cumberland closed the sale of its entire FDA-approved brand portfolio to Apotex. Its revenue line went with it.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Sale price</span><span class="fig-v">$100M</span></div>
+          <div class="fig"><span class="fig-k">Plus inventory/TSA</span><span class="fig-v">$11M</span></div>
+          <div class="fig"><span class="fig-k">Shareholder vote</span><span class="fig-v">99.84%</span></div>
+          <div class="fig"><span class="fig-k">Special dividend</span><span class="fig-v">$1.50/sh</span></div>
+          <div class="fig"><span class="fig-k">Paid</span><span class="fig-v">31 Jul 2026</span></div>
+          <div class="fig"><span class="fig-k">Retained</span><span class="fig-v">Ifetroban</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>$100M cash into a company whose whole market cap was a fraction of that before the deal, plus $11M for inventory and transition services.</li>
+              <li>Shareholders backed it 99.84% — no contested-deal overhang.</li>
+              <li>A $1.50 per share special dividend was already paid out on 31 July.</li>
+              <li>Ifetroban keeps Fast Track, Orphan Drug and Rare Pediatric Disease designations, with reported breakthrough Phase&nbsp;2 results in Duchenne cardiomyopathy.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Every trailing metric on any screener — revenue, P/S, margins — now refers to assets the company sold. Treat them as void.</li>
+              <li>The $1.50 dividend mechanically reduced the share price. Comparing today's price to a pre-dividend 52-week high overstates the drawdown.</li>
+              <li>What remains is a clinical-stage company: one asset, two indications, no marketed product.</li>
+              <li>Q1 showed a $3.3M net loss even <em>with</em> the $9.1M revenue base that has now gone.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Next</span><span>Ifetroban interim safety and efficacy results in idiopathic pulmonary fibrosis, with enrollment underway. Re-underwrite this one from scratch before treating the screen row as meaningful.</span></div>
+      </article>
+
+      <!-- DDD -->
+      <article class="sheet" data-tier="warn">
+        <div class="sheet-head">
+          <span class="sheet-tick">DDD</span>
+          <span class="sheet-co">3D Systems</span>
+          <span class="chip warn">Turnaround</span>
+        </div>
+        <p class="thesis">A cost-reduction story wearing a growth story's clothes. The loss is narrowing because expenses fell, not because the business grew — revenue was essentially flat year over year.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$94.6M</span></div>
+          <div class="fig"><span class="fig-k">y/y change</span><span class="fig-v">~flat</span></div>
+          <div class="fig"><span class="fig-k">Adj EBITDA</span><span class="fig-v">−$0.8M</span></div>
+          <div class="fig"><span class="fig-k">Cash</span><span class="fig-v">$129.0M</span></div>
+          <div class="fig"><span class="fig-k">Debt</span><span class="fig-v">$96.0M</span></div>
+          <div class="fig"><span class="fig-k">Median target</span><span class="fig-v">$3.63</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>Printer hardware sales up 40% — the leading indicator in this industry, since printers pull consumables behind them.</li>
+              <li>Opex cut from $51.5M to $45.1M, bringing adjusted EBITDA nearly to breakeven.</li>
+              <li>Debt largely termed out: only $3.9M due in Q4 2026, the remaining $92M not until 2030.</li>
+              <li>Craig-Hallum upgraded to Buy in August, calling it "on the cusp of another growth cycle."</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Revenue was $94.6M against $94.8M a year ago. After all the restructuring, the top line has not moved.</li>
+              <li>Gross margin contracted 170bps — the improvement is entirely below the gross line.</li>
+              <li><strong>Q3 adjusted EBITDA is guided to −$3M to −$1M, worse than the −$0.8M just posted.</strong> The cost-cut benefit is lapping itself.</li>
+              <li>18.9M shares issued for $53.2M. Existing holders paid for the balance sheet repair.</li>
+              <li>Consensus is 1 Buy, 3 Hold. The street is not convinced.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Watch</span><span>Q3 revenue against the $96–99M guide. Sequential growth would be the first genuine evidence the turnaround is more than subtraction.</span></div>
+      </article>
+
+      <!-- DHX -->
+      <article class="sheet" data-tier="good">
+        <div class="sheet-head">
+          <span class="sheet-tick">DHX</span>
+          <span class="sheet-co">DHI Group</span>
+          <span class="chip good">Cash generative</span>
+        </div>
+        <p class="thesis">Two businesses in one listing: ClearanceJobs, a defensible niche marketplace for security-cleared professionals, stapled to Dice, a shrinking general tech job board. The interesting question is how long they stay stapled.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$31.3M</span></div>
+          <div class="fig"><span class="fig-k">Net income</span><span class="fig-v">$2.6M</span></div>
+          <div class="fig"><span class="fig-k">ClearanceJobs</span><span class="fig-v">+14%</span></div>
+          <div class="fig"><span class="fig-k">Dice</span><span class="fig-v">−14%</span></div>
+          <div class="fig"><span class="fig-k">FY26 revenue</span><span class="fig-v">$124–128M</span></div>
+          <div class="fig"><span class="fig-k">EBITDA margin</span><span class="fig-v">25%</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>Actually profitable: $2.6M net income, reversing a $0.8M loss a year ago. Only two names here can say that.</li>
+              <li>ClearanceJobs bookings up 24% and running at a 40% EBITDA margin — a genuinely good asset with a regulatory moat.</li>
+              <li>25% company-level adjusted EBITDA margin guided for 2026.</li>
+              <li>Management has segmented the two businesses cleanly, which analysts read as groundwork for monetizing one of them.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Dice is down 14% with no bookings recovery expected in 2026 at all. Management has stopped forecasting one.</li>
+              <li>Consolidated revenue still shrank 2%. Growth in one segment is being cancelled by decline in the other.</li>
+              <li>Part of ClearanceJobs' growth is the Point Solutions Group acquisition, not pure organic strength.</li>
+              <li>Analyst targets range from $3.25 to $6.75 — the street cannot agree what the parts are worth.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Next</span><span>Any move to separate or sell Dice. That is the event that would force the market to value ClearanceJobs on its own merits.</span></div>
+      </article>
+
+      <!-- GBTG -->
+      <article class="sheet" data-tier="good">
+        <div class="sheet-head">
+          <span class="sheet-tick">GBTG</span>
+          <span class="sheet-co">Global Business Travel Group</span>
+          <span class="chip good">Scaled operator</span>
+        </div>
+        <p class="thesis">By far the largest business on this list — a roughly $2.6&nbsp;billion corporate travel platform integrating a major acquisition. It is also the name with the least room left between price and where the street thinks it belongs.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">FY26 revenue</span><span class="fig-v">$3.24–3.30B</span></div>
+          <div class="fig"><span class="fig-k">Growth</span><span class="fig-v">19–21%</span></div>
+          <div class="fig"><span class="fig-k">Adj EBITDA</span><span class="fig-v">$615–645M</span></div>
+          <div class="fig"><span class="fig-k">Q2 net income</span><span class="fig-v">$15M</span></div>
+          <div class="fig"><span class="fig-k">Buyback</span><span class="fig-v">$600M</span></div>
+          <div class="fig"><span class="fig-k">Avg target</span><span class="fig-v">$9.75</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>19–21% guided revenue growth at multi-billion scale, reaffirmed rather than trimmed.</li>
+              <li>CWT integration is tracking: $45M of the $55M in-year synergy target already actioned, against $155M total.</li>
+              <li>A $600M buyback on a ~$2.6B market cap is a substantial share-count reduction.</li>
+              <li>Strong client retention and rising digital adoption — the recurring-revenue characteristics of the model are intact.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Trading essentially <em>at</em> its 52-week high, with an average analyst target of $9.75 — roughly 3% above. The consensus upside is gone.</li>
+              <li>$15M of net income on $870M of quarterly sales. GAAP profitability is thin; the story runs on adjusted EBITDA.</li>
+              <li>Management flagged integration drag on margins and roughly breakeven Q1 free cash flow.</li>
+              <li>Only four analysts cover a company this size — thin sponsorship for a large cap.</li>
+              <li>Corporate travel is cyclical and among the first budgets cut in a downturn.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Watch</span><span>Delivery of the remaining $10M of in-year CWT synergies and free-cash-flow conversion — the two things that would justify a target above today's price.</span></div>
+      </article>
+
+      <!-- IRD -->
+      <article class="sheet" data-tier="warn">
+        <div class="sheet-head">
+          <span class="sheet-tick">IRD</span>
+          <span class="sheet-co">Opus Genetics</span>
+          <span class="chip warn">Dated catalysts</span>
+        </div>
+        <p class="thesis">Gene therapy for inherited retinal disease, funded into 2029, with two dated events inside the next eight weeks. Among the clinical-stage names here it has the cleanest structure: real catalysts, no financing cliff.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Cash 6/30</span><span class="fig-v">$88.8M</span></div>
+          <div class="fig"><span class="fig-k">Runway</span><span class="fig-v">into 2029</span></div>
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$0.8M</span></div>
+          <div class="fig"><span class="fig-k">Q2 R&amp;D</span><span class="fig-v">$11.2M</span></div>
+          <div class="fig"><span class="fig-k">EPS</span><span class="fig-v">−$0.14</span></div>
+          <div class="fig"><span class="fig-k">PDUFA</span><span class="fig-v">17 Oct 2026</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>$88.8M funds operations into 2029 — no near-term financing overhang, which is rare in this cohort.</li>
+              <li>FDA alignment via a Type B RMAT meeting on the OPGx-LCA5 registrational design, with a BLA possible on six-month efficacy data.</li>
+              <li>Two dated catalysts within weeks: BEST1 three-month cohort data in September, and a RYZUMVI presbyopia PDUFA on 17 October.</li>
+              <li>A real pipeline behind the lead: RDH12, MERTK and RHO all entering the clinic through 2027.</li>
+              <li>Viatris partnership provides commercial infrastructure and reimburses R&D.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>R&D nearly doubled to $11.2M against $0.8M of revenue. Burn is accelerating.</li>
+              <li>LCA5 dosing only starts in Q4 2026 with topline at end-2027 — the lead asset is years from an answer.</li>
+              <li>LCA5 is an ultra-rare indication. Even approval means a very small commercial market.</li>
+              <li>Weakest position versus its 52-week high on the list, at ~71%. The market has been fading it.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Dated</span><span>September 2026 — OPGx-BEST1 three-month Cohort&nbsp;1 topline. Then 17 October 2026 — RYZUMVI presbyopia PDUFA. Two binary events inside eight weeks.</span></div>
+      </article>
+
+      <!-- NUVB -->
+      <article class="sheet" data-tier="good">
+        <div class="sheet-head">
+          <span class="sheet-tick">NUVB</span>
+          <span class="sheet-co">Nuvation Bio</span>
+          <span class="chip good">Commercial traction</span>
+        </div>
+        <p class="thesis">A commercial-stage oncology company whose drug is already the most prescribed in its class, beating estimates, and trading roughly 30% below its 52-week high. On the numbers this is the widest gap here between what the business is doing and what the price says.</p>
+        <div class="figs">
+          <div class="fig"><span class="fig-k">Q2 revenue</span><span class="fig-v">$31.7M</span></div>
+          <div class="fig"><span class="fig-k">vs consensus</span><span class="fig-v">$27.5M</span></div>
+          <div class="fig"><span class="fig-k">Q2 product</span><span class="fig-v">$23.2M</span></div>
+          <div class="fig"><span class="fig-k">Q1 product</span><span class="fig-v">$18.5M</span></div>
+          <div class="fig"><span class="fig-k">Market cap</span><span class="fig-v">~$1.45B</span></div>
+          <div class="fig"><span class="fig-k">Avg target</span><span class="fig-v">$13.17</span></div>
+        </div>
+        <div class="split">
+          <div class="col">
+            <span class="col-k bull">Supports</span>
+            <ul>
+              <li>IBTROZI is the most prescribed ROS1 TKI in both first-line and overall new patient starts in 2026, per IQVIA claims — market leadership roughly a year after launch.</li>
+              <li>Product revenue compounding: $18.5M in Q1 to $23.2M in Q2.</li>
+              <li>Beat consensus by ~15% in Q2 ($31.7M vs $27.5M).</li>
+              <li>Added a royalty stream from China and Japan, with China NRDL reimbursement effective 1 January 2026.</li>
+              <li>Nine analysts at Buy consensus, targets to $21; RBC raised to $20.</li>
+            </ul>
+          </div>
+          <div class="col">
+            <span class="col-k bear">Against</span>
+            <ul>
+              <li>Financed with convertible debt — leverage plus future dilution, and a claim ahead of equity holders.</li>
+              <li>ROS1-positive NSCLC is a narrow niche; leadership in it caps out at a modest absolute revenue ceiling.</li>
+              <li>Single-product concentration. Everything depends on one launch curve.</li>
+              <li>Down ~30% from its high despite beating — the market is discounting something the headline numbers don't show.</li>
+              <li>Target range of $7 to $21 is extremely wide. Nobody agrees on the terminal value.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="catalyst"><span class="cat-k">Watch</span><span>Q3 product revenue and whether the TKI-naive share of new starts holds. Sustained first-line share is what separates a niche drug from a franchise.</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>What the list tells you as a group</h2>
+      <p>Five observations that only appear when you look at all ten together rather than one at a time.</p>
+    </div>
+
+    <div class="findings">
+      <div class="finding">
+        <h3>Share price is the only thing these have in common</h3>
+        <p>Market capitalizations here span from roughly $120M (AGEN) to around $2.6B (GBTG) — more than a twentyfold difference — at nearly identical share prices of $7.49 and $9.46. A sub-$10 quote says nothing about size, value, or quality. It says the company chose not to reverse-split.</p>
+      </div>
+      <div class="finding">
+        <h3>This is a sector bet, not a diversified list</h3>
+        <p>Seven of the ten are healthcare or biotech. Those seven share the same risk factors — FDA decisions, biotech funding windows, sector-wide sentiment — so they will tend to fall together. Holding all ten gives you far less diversification than the count of names suggests.</p>
+      </div>
+      <div class="finding">
+        <h3>Two of ten make money</h3>
+        <p>Only DHX and GBTG are profitable. Six of the remaining eight are funding operations from cash reserves, and their most important number is not revenue but runway. For AGEN that runway carries a going-concern warning; for ABSI and IRD it stretches to 2028 and 2029 respectively. That difference matters more than any pipeline detail.</p>
+      </div>
+      <div class="finding">
+        <h3>It screens on momentum, whether or not that was intended</h3>
+        <p>Six names sit within 15% of their 52-week highs, and GBTG is essentially at its high. Buying this list means buying strength that has already been rewarded. The two names furthest from their highs — NUVB at ~70% and IRD at ~71% — are the ones where a value argument is even available.</p>
+      </div>
+      <div class="finding">
+        <h3>At least one row is describing a company that no longer exists</h3>
+        <p>The list's own disclosure notes the data is as of the previous Friday, but CPIX has a deeper problem: it closed the sale of its entire marketed portfolio on 4 August and paid a $1.50 special dividend on 31 July. Its trailing revenue, margins and price history all refer to a business it no longer owns. Always check for corporate actions before trusting a screener row.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>How this was put together</h2>
+    </div>
+    <div class="limits">
+      <p><strong>What this is:</strong> a synthesis of each company's most recent reported results, filings and analyst coverage as of 22 August 2026, organized so the ten are comparable on the same terms.</p>
+      <p><strong>What it is not:</strong> personalized investment advice, a recommendation to buy or sell, or a price forecast. Position sizing and suitability depend on circumstances this document knows nothing about.</p>
+      <ul>
+        <li>Prices and 52-week highs are read from the screenshots as listed, and the source discloses they are as of the previous Friday. Several appear truncated in the display, so "% of high" figures are approximate.</li>
+        <li>Where sources disagreed on a current quote or market cap — as they did for BFLY and DDD — the reported operating figures are used and the price is left as listed, rather than asserting a precise number.</li>
+        <li>Figures come from company reports, SEC filings and analyst summaries; consensus targets change frequently and were current as of the review date.</li>
+        <li>The original list carries a conflict-of-interest disclosure stating its publisher and employees may own the securities mentioned. Weigh the source accordingly.</li>
+      </ul>
+      <p><strong>On running Kronos against these:</strong> the model could not be run in this session — the container's egress policy blocks PyPI, Hugging Face and every market-data host, so neither PyTorch, the model weights, nor OHLCV history could be fetched. That analysis needs an environment with network access to those hosts.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Prepared 22 August 2026 from public filings, company reports and analyst coverage. Forward-looking statements in company guidance are the companies' own and are not verified here.</p>
+    <p>For research and educational purposes only. Not investment advice.</p>
+  </footer>
+
+</div>
