@@ -47,7 +47,48 @@ The mirror image of the inflated profit line is the cash line:
 So the honest one-line summary of Amazon right now: **the operating business is accelerating,
 the reported profit is flattered by a paper gain, and the cash is going into the ground.**
 
-## 3. What the tape says (2026-09-02)
+## 3. P/E comparisons — and why the screen number is wrong
+
+Every low P/E currently quoted for AMZN is contaminated by the Anthropic marks. Two independent
+routes agree on the clean number:
+
+- **Ex-gain arithmetic:** ~$2.75T cap at the quoted ~20.5x implies ~$134B trailing net income;
+  removing ~$70.2B of pre-tax Anthropic gains (~$53–55B after tax) leaves ~$79–81B, i.e.
+  **~34x**.
+- **Sanity check against a clean year:** 2025 actual EPS of $7.17 against a ~$255 price is
+  **~35.6x**.
+
+| | Trailing P/E | Forward P/E | Note |
+|---|---|---|---|
+| **AMZN as quoted** | ~20.5x | ~20.4x | both distorted by investment marks |
+| **AMZN, clean** | **~34x** | **~33x** on 2026E ($7.73), **~27x** on 2027E ($9.40) | use these |
+| Apple | 36.2x | 32.9x | Aug 31 2026 |
+| Meta | — | 33.1x | |
+| Alphabet | ~32x | — | *also* holds Anthropic; its trailing figure is likely flattered too |
+| Microsoft | 27.4x | 24.9x | Aug 31 2026 |
+| Nvidia | — | <23x | different fiscal calendar; fastest earnings growth |
+| S&P 500 | — | 23.6x | index reference |
+
+What falls out of the table:
+
+1. **AMZN is not a ~20x stock.** On a clean basis it sits in the low-to-mid 30s alongside Apple,
+   Meta and Alphabet — a premium cohort — and well above Microsoft, Nvidia and the index.
+2. **The Alphabet comparison is closer than it looks.** Alphabet carries the same Anthropic
+   mark-to-market distortion, so its clean multiple is *higher* than the quoted ~32x. AMZN vs
+   GOOGL on like-for-like earnings is roughly a wash, not a discount.
+3. **Only the 2027 line makes AMZN look reasonable** (~27x on $9.40 consensus EPS), and that
+   requires the ~$220B capex cycle to convert into earnings on schedule.
+4. **Versus its own history it is unremarkable:** 31.7x at end-2025, 34.7x trailing / 32.1x
+   forward in April 2026. Today's ~34x is mid-range for the last two years, not stretched.
+
+**Caveat on the tool itself.** P/E is a poor lens for AMZN in this particular cycle. Depreciation
+from ~$220B of capex is about to compress the E for several years, while free cash flow — the
+usual fallback — is already negative, so FCF multiples fail too. The defensible comparisons here
+are EV/EBITDA, or P/E on 2027 once the depreciation is inside the run rate. Any screen ranking
+mega-caps by trailing P/E right now is ranking accounting artifacts: a one-off investment gain
+inflates E and *lowers* the printed multiple, making the most distorted company look cheapest.
+
+## 4. What the tape says (2026-09-02)
 
 - ~**$255**, market cap ~**$2.75T**. 52-week range **$196.00–$287.20** — about **11% below the
   high** and **30% above the low**. This is a normal mega-cap drawdown, not a broken chart.
@@ -59,7 +100,7 @@ the reported profit is flattered by a paper gain, and the cash is going into the
 justifies the spend; the same spend at +20% AWS growth would not. Watch the backlog conversion
 rate and the operating-margin guide, not the EPS headline.
 
-## 4. What Kronos can and cannot add here
+## 5. What Kronos can and cannot add here
 
 AMZN is the opposite modeling problem from CBRS and NNE:
 
@@ -84,7 +125,7 @@ Earnings dates are the one structural caveat: a quarterly print inside the forec
 scheduled jump the price series cannot anticipate. Either keep the horizon inside an
 inter-earnings window or expect the realized path to breach the bands on that one day.
 
-## 5. Running it
+## 6. Running it
 
 ```shell
 # 21 sessions ahead on ~5 years of daily bars
@@ -109,3 +150,9 @@ python examples/cbrs_cerebras_analysis.py --ticker AMZN --start 2015-01-01 \
 - [TheNextWeb — Q1 2026 Anthropic gain, FCF down 95%](https://thenextweb.com/news/amazon-q1-2026-anthropic-aws-earnings)
 - [Investing.com — AMZN quote](https://www.investing.com/equities/amazon-com-inc)
 - [MarketBeat — AMZN forecast](https://www.marketbeat.com/stocks/NASDAQ/AMZN/forecast/)
+- [GuruFocus — AMZN forward P/E](https://www.gurufocus.com/term/forward-pe-ratio/AMZN) and
+  [AAPL forward P/E](https://www.gurufocus.com/term/forward-pe-ratio/AAPL)
+- [stockanalysis.com — MSFT statistics](https://stockanalysis.com/stocks/msft/statistics/)
+- [TIKR — Amazon P/E history and 2026/2027 EPS consensus](https://www.tikr.com/blog/amazon-pe-ratio)
+- [financecharts — AAPL P/E history](https://www.financecharts.com/stocks/AAPL/value/pe-ratio)
+- [Nasdaq — cheapest trillion-dollar stock comparison](https://www.nasdaq.com/articles/cheapest-trillion-dollar-stock-nvidia-microsoft-apple-amazon-alphabet-or-meta)
