@@ -88,7 +88,49 @@ phase at good terms.
 And the timeline is long: **5GW phased from 2029, 15GW by 2035** — three and nine years out.
 Nothing in today's numbers.
 
-## 4. The tape and the shape of the bet
+## 4. The Anthropic stake — the part a telecom screen never shows
+
+SK Telecom invested **$100M in Anthropic in August 2023** (following an earlier investment via
+SKTVC, its Silicon Valley venture arm), alongside a partnership to build a telco-customised
+multilingual LLM. That bought roughly **2%** of Anthropic at the time; later issuance rounds have
+diluted it to about **0.3%**.
+
+Carried at a book value near **KRW 1.3T (~$970M)**, third-party estimates of current worth range
+from **$1.0B to $2.6B** — a **10x to 26x** return on $100M in under three years. Reporting says
+SKT **added to the position rather than exiting** ahead of the IPO.
+
+Against SKT's ~$13.93B market cap:
+
+| Assumed stake value | Share of SKM market cap | Anthropic exposure per $10,000 |
+|---|---|---|
+| $0.97B (book) | 7.0% | $696 |
+| $1.0B (low estimate) | 7.2% | $718 |
+| $2.0B (mid) | **14.4%** | **$1,436** |
+| $2.6B (high / post-IPO) | 18.7% | $1,866 |
+
+For comparison, Amazon's $190.4B stake against a $2.75T cap is **6.9%**, i.e. **$692 per
+$10,000**. So at the middle of the estimate range **SKM carries roughly 2x the Anthropic exposure
+per dollar that AMZN does** — and unlike a pre-IPO fund there is no NAV premium and no management
+fee, plus a ~2.95% dividend while you wait.
+
+**Four things keep this from being a free lunch:**
+
+1. **The estimate range is a 2.6x spread.** $1.0B and $2.6B are third-party guesses against a
+   private cap table that is not public. The company's own book value (~$970M) sits at the bottom
+   of that range. Size the position off the *low* end.
+2. **0.3% is small and has already been diluted heavily** — 2% to 0.3% in under three years
+   through later rounds. Further issuance, including at IPO, dilutes it again.
+3. **The gain is unrealised and sits in other comprehensive income**, not in net income. It never
+   flows through reported earnings unless SKT sells — and if SKT sells, the exposure you bought
+   the stock for is gone. The value reaches you only via a sum-of-the-parts re-rating, or a sale
+   you would not want.
+4. **This is not undiscovered.** SKM has already risen sharply on Anthropic-stake valuation news
+   at least once. Whatever is left is a bet that the market still under-weights it, not a secret.
+
+And the obvious point: at the mid estimate you are paying for **~86% flat Korean telecom** to own
+**~14% Anthropic**. Section 2's revenue line (+0.5%) is what that 86% does.
+
+## 5. The tape and the shape of the bet
 
 - ADR **$34.88** (Aug 6, 2026), market cap **~$13.93B**. 52-week range **$19.66–$47.18** — a 2.4x
   span; **~26% below the high**, ~77% above the low.
@@ -104,6 +146,7 @@ So the bet decomposes cleanly into three parts, which is unusually legible:
    17% of market cap, growing 92.5% but only 3.1% of revenue.
 3. **A free option on 5–15GW** that requires capital SKT does not have and partners it must keep
    finding, paying off from 2029 at the earliest.
+4. **A ~0.3% stake in Anthropic** worth an estimated $1.0–2.6B, or 7–19% of market cap — see §4.
 
 If you want AI infrastructure exposure, the [EME](./EME_emcor_analysis.md) and
 [STRL](./STRL_sterling_infrastructure_analysis.md) notes describe companies where that exposure
@@ -111,7 +154,7 @@ is 90%+ of the business today. SKM is a telecom with a 3% AI segment and a large
 ambition. Both can be reasonable; they are not the same trade, and the dividend plus the KKR
 mark are what actually support SKM's floor.
 
-## 5. Modelling notes
+## 6. Modelling notes
 
 - **ADR mechanics.** SKM is an unhedged KRW-denominated claim: your USD return is the Korean
   return times the won move. USD/KRW ~1,369 with the won up ~5% in August (see the EWY notes) —
@@ -143,4 +186,9 @@ python examples/cbrs_cerebras_analysis.py --ticker SKM --start 2015-01-01 \
 - [Form 6-K — 15GW long-term AI data centre plan](https://www.stocktitan.net/sec-filings/SKM/6-k-sk-telecom-co-ltd-current-report-foreign-issuer-6b95e0cd5f54.html)
 - [Korea Herald — record privacy fine over the data breach](https://www.koreaherald.com/article/10563945)
 - [CPO Magazine — breach detail, 23.2M affected](https://www.cpomagazine.com/data-protection/sk-telecom-hit-with-a-record-data-breach-fine-over-cybersecurity-failures-exposing-23-2m-people/)
+- [SK Telecom — $100M investment in Anthropic (2023)](https://news.sktelecom.com/en/699)
+- [Anthropic — SKT partnership announcement](https://www.anthropic.com/news/skt-partnership-announcement)
+- [UPI — Anthropic IPO lifts outlook for the SK Telecom stake](https://www.upi.com/Top_News/World-News/2026/04/14/business-ipo-ai/9841776199967/)
+- [Investing.com — SKM rises 12% on Anthropic stake valuation](https://www.investing.com/news/analyst-ratings/sk-telecom-stock-rises-12-on-anthropic-stake-valuation-93CH-4468023)
+- [TechTimes — SKT adds to the stake ahead of the IPO](https://www.techtimes.com/articles/318131/20260610/sk-telecom-adds-anthropic-stake-rather-exit-ahead-965-billion-ipo.htm)
 - [Investing.com — SKM quote](https://www.investing.com/equities/sk-telecom)
