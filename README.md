@@ -216,7 +216,6 @@ Additionally, we provide a script that makes predictions without Volume and Amou
 To forecast a US-listed stock end to end (download daily bars from Yahoo Finance, run Kronos, save a CSV and chart), use [`examples/prediction_us_stock.py`](examples/prediction_us_stock.py). It defaults to McDonald's (`MCD`):
 
 ```bash
-pip install yfinance
 cd examples
 python prediction_us_stock.py                  # MCD, next 20 trading days
 python prediction_us_stock.py --backtest       # hold out the last 20 days and report MAPE

@@ -1,20 +1,22 @@
 """
 Forecast daily K-lines for a US-listed stock with Kronos.
 
-Defaults to McDonald's (NYSE: MCD). Data is pulled from Yahoo Finance via
-`yfinance`, or read from a local CSV with `--csv` for offline use.
+Defaults to McDonald's (NYSE: MCD). Daily bars are pulled from Yahoo Finance's
+chart API, or read from a local CSV with `--csv` for offline use.
 
 Examples:
     python prediction_us_stock.py                       # forecast MCD 20 trading days ahead
     python prediction_us_stock.py --backtest            # hold out the last 20 days and compare
     python prediction_us_stock.py --ticker AAPL --pred-len 10
     python prediction_us_stock.py --csv ./data/MCD.csv  # columns: timestamps/date, open, high, low, close, volume
-
-Requires: pip install yfinance (only when --csv is not given)
 """
 import argparse
+import json
 import os
 import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -34,19 +36,34 @@ US_TRADING_DAY = CustomBusinessDay(calendar=USFederalHolidayCalendar())
 
 
 def fetch_yahoo(ticker, period):
+    """Daily bars from Yahoo Finance's chart API, split/dividend adjusted."""
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(ticker)}"
+           f"?range={period}&interval=1d&events=div,splits")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     try:
-        import yfinance as yf
-    except ImportError:
-        sys.exit("yfinance is not installed. Run `pip install yfinance` or pass --csv.")
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            payload = json.load(resp)
+    except urllib.error.URLError as e:
+        sys.exit(f"Failed to download {ticker} from Yahoo Finance: {e}. Pass --csv to use local data.")
 
-    raw = yf.download(ticker, period=period, interval="1d", auto_adjust=True, progress=False)
-    if raw.empty:
+    result = (payload.get("chart") or {}).get("result")
+    if not result or not result[0].get("timestamp"):
         sys.exit(f"No data returned for {ticker}.")
-    if isinstance(raw.columns, pd.MultiIndex):  # newer yfinance returns (field, ticker) columns
-        raw.columns = raw.columns.get_level_values(0)
+    result = result[0]
+    quote = result["indicators"]["quote"][0]
+    tz = result["meta"].get("exchangeTimezoneName", "America/New_York")
 
-    df = raw.rename(columns=str.lower).reset_index().rename(columns={"Date": "timestamps"})
-    return df[["timestamps", "open", "high", "low", "close", "volume"]]
+    df = pd.DataFrame({
+        "timestamps": pd.to_datetime(result["timestamp"], unit="s", utc=True).tz_convert(tz).normalize(),
+        **{col: quote[col] for col in ("open", "high", "low", "close", "volume")},
+    })
+    adjclose = result["indicators"].get("adjclose")
+    if adjclose:
+        # Scale OHLC so that close matches the adjusted close.
+        factor = pd.Series(adjclose[0]["adjclose"], dtype=float) / df["close"]
+        for col in ("open", "high", "low", "close"):
+            df[col] = df[col] * factor
+    return df
 
 
 def load_csv(path):
