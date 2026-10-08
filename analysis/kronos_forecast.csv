@@ -1,0 +1,5 @@
+name,ticker,last_date,last,median_20d,chg_pct,p10,p90,prob_up
+Nippon Steel,5401.T,2026-10-08,631.8,582.54,-7.8,573.72,594.31,0
+Intel,INTC,2026-10-07,113.12,56.94,-49.7,47.77,63.03,0
+MP Materials,MP,2026-10-07,46.31,57.48,24.1,53.64,62.61,95
+Lithium Americas,LAC,2026-10-07,2.41,4.49,86.2,4.19,5.08,100
